@@ -16,8 +16,16 @@ class User:
 
 # Takes in two user objects and outputs a float denoting compatibility
 def compute_score(user1, user2):
-    # YOUR CODE HERE
-    return 0
+    
+    # If user 2 is not of user 1's preferred gender (or vice versa), we can terminate the function here because we won't be matching these users together anyways
+    if user2.gender not in user1.preferences or user1.gender not in user2.preferences: 
+        return 0
+    
+    sum = 0
+    for i in user2.responses:
+        sum = user2.responses[i] + user1.responses[i]
+        
+    return sum
 
 
 if __name__ == '__main__':
